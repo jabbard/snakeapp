@@ -6,7 +6,6 @@ from .serializers import HospitalSerializer
 
 # Create your views here.
 class HospitalViewSet(viewsets.ModelViewSet):
-    def list(self, request):
-        queryset = Hospital.objects.all()
-        serializer = HospitalSerializer(data=queryset, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    serializer_class = HospitalSerializer
+    queryset = Hospital.objects.all()
+
